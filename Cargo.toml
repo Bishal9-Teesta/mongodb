@@ -1,0 +1,15 @@
+[package]
+name = "mongo_db"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1.29.1", features = ["full"] }
+mongodb = { version = "2.6.0", features = ["tokio-sync"] }
+tokio-sync = "0.1.8"
+once_cell = "1.18.0"
+serde = { version = "1.0.175", features = ["derive"] }
+serde_json = "1.0.103"
+reqwest = "0.11.18"
