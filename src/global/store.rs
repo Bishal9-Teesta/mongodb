@@ -1,14 +1,10 @@
-use crate::GLOBAL;
-use std::sync::MutexGuard;
+use crate::DB_CONNECTION_POOL;
+use mongodb::Database;
 
-pub unsafe fn store() {
-    println!("GLOBAL: {}", GLOBAL.lock().unwrap());
+pub fn get_global() -> Database {
+    DB_CONNECTION_POOL.lock().unwrap().clone().unwrap()
 }
 
-pub fn get_global() -> MutexGuard<'static, i128> {
-    GLOBAL.lock().unwrap()
-}
-
-pub fn set_global(new_global: i128) {
-    *GLOBAL.lock().unwrap() = new_global;
+pub fn set_global(new_database_connection: mongodb::Database) {
+    DB_CONNECTION_POOL.lock().unwrap().get_or_insert(new_database_connection);
 }

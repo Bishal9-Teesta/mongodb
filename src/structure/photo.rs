@@ -1,7 +1,8 @@
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize)]
+#[allow(non_snake_case)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Photo {
     pub albumId: u8,
     pub id: u64,

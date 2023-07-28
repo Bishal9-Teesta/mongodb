@@ -6,17 +6,16 @@ pub async fn mongodb_client() {
 
     let mut database_exist = false;
     for single_database in db_list {
-        if (single_database == "json_placeholder".to_string()) {
+        if single_database == "json_placeholder".to_string() {
             database_exist = true
         }
     }
 
     if !database_exist {
-        // client.database()
-        println!("Database do not exist.")
+        println!("Database 'json_placeholder' do not exist.")
     } else {
-        println!("Database exist.")
+        println!("Database 'json_placeholder' exist.")
     }
     let database = client.database("json_placeholder");
-
+    crate::global::store::set_global(database);
 }
